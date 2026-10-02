@@ -39,7 +39,7 @@ export default function HomePage() {
               render={<Link href="/services" />}
               size="lg"
               variant="outline"
-              className="border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+              className="hidden border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white sm:inline-flex"
             >
               Our services
             </Button>
