@@ -83,43 +83,23 @@ export function FocalBanner({
 
       const desktop = cW >= DESKTOP_MIN;
       const fadeRight = window.innerWidth >= ULTRAWIDE_MIN;
-      const wide = cW / cH >= width / height;
-      const frameSubject = desktop && wide && fillFrame && subject ? subject : null;
 
-      if (desktop && wide && !frameSubject) {
-        const scale = Math.min(cW / width, cH / height);
-        const sW = width * scale;
-        const sH = height * scale;
-        let left = targetX * cW - focalX * sW;
-        const minLeft = Math.min(0, cW - sW);
-        const maxLeft = Math.max(0, cW - sW);
-        left = Math.min(maxLeft, Math.max(minLeft, left));
-        setBox({
-          left,
-          top: sH < cH - 1 ? cH - sH : 0,
-          width: sW,
-          height: sH,
-          mask: left > 8,
-          fadeRight,
-        });
-        return;
-      }
-
-      if (frameSubject) {
-        // Scale the drawn focus frame so its height fills the banner.
-        // The photo then covers more width instead of sitting in a narrow strip.
-        const subH = Math.max(0.2, frameSubject.b - frameSubject.t) * height;
+      // Short interiors: always fillFrame on desktop when a subject box is set.
+      // Do not gate on plane aspect - contain-only leaves a ~40% strip and a
+      // wide brand dead zone under the lockup (website-banners).
+      if (desktop && fillFrame && subject) {
+        const subH = Math.max(0.2, subject.b - subject.t) * height;
         let scale = cH / subH;
         if (width * scale > cW) scale = cW / width;
         const sW = width * scale;
         const sH = height * scale;
 
-        let top = -frameSubject.t * sH;
+        let top = -subject.t * sH;
         top = Math.min(0, Math.max(cH - sH, top));
 
         let left = cW - sW;
-        const leftKeepRight = cW - frameSubject.r * sW;
-        const leftKeepLeft = -frameSubject.l * sW;
+        const leftKeepRight = cW - subject.r * sW;
+        const leftKeepLeft = -subject.l * sW;
         left = Math.min(left, leftKeepRight);
         left = Math.max(left, leftKeepLeft);
         if (sW <= cW) {
@@ -134,6 +114,26 @@ export function FocalBanner({
           width: sW,
           height: sH,
           mask: false,
+          fadeRight,
+        });
+        return;
+      }
+
+      // Home / tall frames without fillFrame: contain-and-slide on desktop.
+      if (desktop) {
+        const scale = Math.min(cW / width, cH / height);
+        const sW = width * scale;
+        const sH = height * scale;
+        let left = targetX * cW - focalX * sW;
+        const minLeft = Math.min(0, cW - sW);
+        const maxLeft = Math.max(0, cW - sW);
+        left = Math.min(maxLeft, Math.max(minLeft, left));
+        setBox({
+          left,
+          top: sH < cH - 1 ? cH - sH : 0,
+          width: sW,
+          height: sH,
+          mask: left > 8,
           fadeRight,
         });
         return;
