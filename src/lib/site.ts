@@ -258,8 +258,9 @@ export const brandLinks = [
 
 /**
  * Shared hero image metadata with measured landmarks for FocalBanner.
- * Plates outpainted with gpt-image-2 (1536x1024) for side + vertical padding.
- * focalX/focalY are points IN THE FILE (not screen targets).
+ * Interior plates: gpt-image-2 tight subjects composited into the right half
+ * of a 1920x640 banner, then left-half background filled (not remakes of old
+ * wrong-aspect plates). focalX/focalY are points IN THE FILE (not screen targets).
  * Interiors use fillFrame + subject so short banners cover ~70-90% at 1280.
  */
 export const heroes = {
@@ -281,48 +282,48 @@ export const heroes = {
     alt: "Black leather dress shoes with a high polish on a wood floor",
     width: 1920,
     height: 640,
-    // Landmark: center of the shoe pair / nearer toe box
-    focalX: 0.72,
+    // Landmark: nearer toe box (right-half subject plate)
+    focalX: 0.76,
     focalY: 0.52,
     fillFrame: true,
     bleed: true,
-    // Nearly full plate - mild zoom so short interiors stay ≥70% cover
-    subject: { l: 0.35, t: 0.08, r: 0.98, b: 0.92 },
+    // Subject occupies the full right half by construction
+    subject: { l: 0.5, t: 0.02, r: 0.99, b: 0.98 },
   },
   products: {
     src: "/images/hero-products.jpg",
-    alt: "Brown leather boots on a light wood floor",
+    alt: "Cognac leather chukka boots on a dark wood floor",
     width: 1920,
     height: 640,
-    // Landmark: vamp of the nearer boot
-    focalX: 0.72,
-    focalY: 0.52,
+    // Landmark: nearer boot vamp / lace area
+    focalX: 0.76,
+    focalY: 0.5,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.35, t: 0.08, r: 0.98, b: 0.92 },
+    subject: { l: 0.5, t: 0.02, r: 0.99, b: 0.98 },
   },
   policy: {
     src: "/images/hero-watch.jpg",
     alt: "Minimal wristwatch with a leather strap held in hand",
     width: 1920,
     height: 640,
-    // Landmark: center of the watch dial
-    focalX: 0.72,
-    focalY: 0.42,
+    // Landmark: watch dial center
+    focalX: 0.78,
+    focalY: 0.48,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.4, t: 0.05, r: 0.98, b: 0.95 },
+    subject: { l: 0.5, t: 0.02, r: 0.99, b: 0.98 },
   },
   contact: {
     src: "/images/hero-contact.jpg",
-    alt: "Navy high-heeled pumps held outdoors",
+    alt: "Navy suede high-heeled pumps held outdoors",
     width: 1920,
     height: 640,
-    // Landmark: mid vamp of the nearer pump
-    focalX: 0.7,
-    focalY: 0.42,
+    // Landmark: mid vamp of nearer pump
+    focalX: 0.8,
+    focalY: 0.48,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.4, t: 0.02, r: 0.98, b: 0.95 },
+    subject: { l: 0.5, t: 0.02, r: 0.99, b: 0.98 },
   },
 } as const;
