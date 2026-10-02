@@ -1,0 +1,148 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-display);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-ink: var(--ink);
+  --color-leather: var(--leather);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Berry + espresso leather - not cream/terracotta cliché, not purple */
+  --background: #ebe4dc;
+  --foreground: #1a1214;
+  --ink: #1a1214;
+  --leather: #5c4033;
+  --brand: #b01e32;
+  --brand-soft: #e8a0a8;
+  --brand-foreground: #ffffff;
+  --card: #f7f1ea;
+  --card-foreground: #1a1214;
+  --popover: #f7f1ea;
+  --popover-foreground: #1a1214;
+  --primary: #b01e32;
+  --primary-foreground: #ffffff;
+  --secondary: #2a1c1f;
+  --secondary-foreground: #f7f1ea;
+  --muted: #ddd3c8;
+  --muted-foreground: #5a4a45;
+  --accent: #e4d8cc;
+  --accent-foreground: #1a1214;
+  --destructive: #9b1c1c;
+  --border: #c9b9ab;
+  --input: #c9b9ab;
+  --ring: #b01e32;
+  --chart-1: #b01e32;
+  --chart-2: #5c4033;
+  --chart-3: #2a1c1f;
+  --chart-4: #8a7366;
+  --chart-5: #ddd3c8;
+  --radius: 0.4rem;
+  --sidebar: #f7f1ea;
+  --sidebar-foreground: #1a1214;
+  --sidebar-primary: #b01e32;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e4d8cc;
+  --sidebar-accent-foreground: #1a1214;
+  --sidebar-border: #c9b9ab;
+  --sidebar-ring: #b01e32;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(ellipse 110% 70% at 8% -8%, rgba(176, 30, 50, 0.07), transparent 48%),
+      radial-gradient(ellipse 80% 50% at 100% 0%, rgba(92, 64, 51, 0.08), transparent 42%),
+      linear-gradient(180deg, #f0e8df 0%, #ebe4dc 45%, #e3d8cd 100%);
+    background-attachment: fixed;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+}
+
+.site-wrap {
+  width: min(72rem, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .site-wrap {
+    width: min(72rem, calc(100% - 3.5rem));
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.7s ease-out both;
+}
+
+.animate-rise-delay {
+  animation: rise 0.7s ease-out 0.12s both;
+}
+
+.animate-rise-delay-2 {
+  animation: rise 0.7s ease-out 0.24s both;
+}
