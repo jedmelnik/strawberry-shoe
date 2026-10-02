@@ -287,8 +287,8 @@ export const heroes = {
     focalY: 0.52,
     fillFrame: true,
     bleed: true,
-    // Subject occupies the full right half by construction
-    subject: { l: 0.5, t: 0.02, r: 0.99, b: 0.98 },
+    // Zoom the right-half product so short interiors cover ~90%+ at 1280
+    subject: { l: 0.52, t: 0.1, r: 0.99, b: 0.9 },
   },
   products: {
     src: "/images/hero-products.jpg",
@@ -300,7 +300,7 @@ export const heroes = {
     focalY: 0.5,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.5, t: 0.02, r: 0.99, b: 0.98 },
+    subject: { l: 0.52, t: 0.08, r: 0.99, b: 0.92 },
   },
   policy: {
     src: "/images/hero-watch.jpg",
@@ -312,7 +312,7 @@ export const heroes = {
     focalY: 0.48,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.5, t: 0.02, r: 0.99, b: 0.98 },
+    subject: { l: 0.55, t: 0.08, r: 0.99, b: 0.92 },
   },
   contact: {
     src: "/images/hero-contact.jpg",
@@ -324,6 +324,6 @@ export const heroes = {
     focalY: 0.48,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.5, t: 0.02, r: 0.99, b: 0.98 },
+    subject: { l: 0.55, t: 0.06, r: 0.99, b: 0.94 },
   },
 } as const;
