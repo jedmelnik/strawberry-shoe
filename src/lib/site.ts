@@ -258,6 +258,7 @@ export const brandLinks = [
 
 /**
  * Shared hero image metadata with measured landmarks for FocalBanner.
+ * Plates outpainted with gpt-image-2 (1536x1024) for side + vertical padding.
  * focalX/focalY are points IN THE FILE (not screen targets).
  * Interiors use fillFrame + subject so short banners cover ~70-90% at 1280.
  */
@@ -265,62 +266,62 @@ export const heroes = {
   home: {
     src: "/images/hero-home.jpg",
     alt: "Polished brown leather monk-strap dress shoes on a wooden surface",
-    width: 1920,
-    height: 1282,
+    width: 1536,
+    height: 1024,
     // Landmark: nearer shoe buckle / strap clasp
-    focalX: 0.58,
-    focalY: 0.52,
-    // Home plane is short vs this landscape file - fillFrame avoids a ~40% strip
+    focalX: 0.62,
+    focalY: 0.55,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.22, t: 0.32, r: 0.9, b: 0.78 },
+    // ~0.74 subject height → ~78% cover at 1280 while keeping outpaint padding
+    subject: { l: 0.15, t: 0.14, r: 0.95, b: 0.88 },
   },
   services: {
     src: "/images/hero-services.jpg",
     alt: "Black leather dress shoes with a high polish on a wood floor",
-    width: 1920,
-    height: 1272,
-    // Landmark: center of the toe box / lace knot of the nearer shoe
-    focalX: 0.5,
-    focalY: 0.5,
+    width: 1536,
+    height: 1024,
+    // Landmark: center of the toe box of the nearer shoe
+    focalX: 0.62,
+    focalY: 0.52,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.2, t: 0.28, r: 0.9, b: 0.72 },
+    subject: { l: 0.28, t: 0.26, r: 0.9, b: 0.75 },
   },
   products: {
     src: "/images/hero-products.jpg",
     alt: "Brown leather boots on a light wood floor",
-    width: 1920,
-    height: 1280,
+    width: 1536,
+    height: 1024,
     // Landmark: vamp / lace of the front boot
-    focalX: 0.38,
-    focalY: 0.55,
+    focalX: 0.58,
+    focalY: 0.5,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.05, t: 0.35, r: 0.7, b: 0.8 },
+    subject: { l: 0.25, t: 0.26, r: 0.88, b: 0.75 },
   },
   policy: {
     src: "/images/hero-watch.jpg",
     alt: "Minimal wristwatch with a leather strap held in hand",
-    width: 1920,
-    height: 1395,
+    width: 1536,
+    height: 1024,
     // Landmark: center of the watch dial
-    focalX: 0.48,
-    focalY: 0.42,
+    focalX: 0.68,
+    focalY: 0.38,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.28, t: 0.2, r: 0.78, b: 0.58 },
+    subject: { l: 0.4, t: 0.12, r: 0.92, b: 0.54 },
   },
   contact: {
     src: "/images/hero-contact.jpg",
     alt: "Navy high-heeled pumps held outdoors",
-    width: 1920,
-    height: 1259,
+    width: 1536,
+    height: 1024,
     // Landmark: mid vamp of the nearer pump
-    focalX: 0.5,
+    focalX: 0.62,
     focalY: 0.48,
     fillFrame: true,
     bleed: true,
-    subject: { l: 0.22, t: 0.16, r: 0.82, b: 0.62 },
+    subject: { l: 0.32, t: 0.14, r: 0.9, b: 0.6 },
   },
 } as const;
